@@ -1,5 +1,4 @@
-
-# IA03 - User Registration
+# IA04 - JWT Authentication
 
 This project is part of the Advanced Web Programming course - VNUHCMUS - 2024.
 
