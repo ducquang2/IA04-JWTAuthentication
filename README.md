@@ -58,4 +58,4 @@ cd ia03-fe && yarn dev
 ## Deployment
 
 - The API is deployed on [Render](https://dashboard.render.com/)
-- The web project is deployed on [Vercel](https://ia-03-user-registration.vercel.app)
+- The web project is deployed on [Vercel](https://ia-04-jwt-authentication.vercel.app)
