@@ -24,6 +24,8 @@ API_URL=http://localhost:3001
 
 # BACKEND
 DATABASE_URL=postgres://username:password@localhost:5432/dbname
+PORT=3000
+JWT_SECRET=...
 ```
 
 4. Run the following command to start the API
@@ -40,22 +42,22 @@ cd ia03-fe && yarn dev
 
 ## Rubric
 
-| Criteria                    | Description                                                        | Score |
-| --------------------------- | ------------------------------------------------------------------ | ----- |
-| Registration Endpoint       | Works perfectly; validations and hashing are correct.              | 0.5   |
-| Login Endpoint              | Works correctly; token generated and returned.                     | 0.5   |
-| JWT Token Validation        | Proper middleware with token verification on all protected routes. | 0.5   |
-| Profile (Protected Route)   | Protected route works; only accessible with valid token.           | 0.5   |
-| Register page               |                                                                    | 1     |
-| Login page                  |                                                                    | 1     |
-| Profile page                |                                                                    | 1     |
-| Home page                   | Display content based on authentication status                     | 1     |
-| Frontend Form Handling      | All forms work smoothly; good UX with error handling.              | 1     |
-| State Management            | State managed well; token and user info updated smoothly.          | 1     |
-| Error Handling and Feedback | Comprehensive error handling; clear user feedback.                 | 1     |
-| Public host                 | Public host deployment                                             | 1     |
+| Criteria                    | Description                                                        | Score | Status |
+| --------------------------- | ------------------------------------------------------------------ | ----- | ------ |
+| Registration Endpoint       | Works perfectly; validations and hashing are correct.              | 0.5   | ✅     |
+| Login Endpoint              | Works correctly; token generated and returned.                     | 0.5   | ✅     |
+| JWT Token Validation        | Proper middleware with token verification on all protected routes. | 0.5   | ✅     |
+| Profile (Protected Route)   | Protected route works; only accessible with valid token.           | 0.5   | ✅     |
+| Register page               |                                                                    | 1     | ✅     |
+| Login page                  |                                                                    | 1     | ✅     |
+| Profile page                |                                                                    | 1     | ✅     |
+| Home page                   | Display content based on authentication status                     | 1     | ✅     |
+| Frontend Form Handling      | All forms work smoothly; good UX with error handling.              | 1     | ✅     |
+| State Management            | State managed well; token and user info updated smoothly.          | 1     | ✅     |
+| Error Handling and Feedback | Comprehensive error handling; clear user feedback.                 | 1     | ✅     |
+| Public host                 | Public host deployment                                             | 1     | ✅     |
 
 ## Deployment
 
 - The API is deployed on [Render](https://dashboard.render.com/)
-- The web project is deployed on [Vercel](https://ia-03-user-registration.vercel.app)
+- The web project is deployed on [Vercel](https://ia-04-jwt-authentication.vercel.app)
