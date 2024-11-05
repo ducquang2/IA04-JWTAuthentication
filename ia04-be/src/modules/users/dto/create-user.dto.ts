@@ -1,23 +1,12 @@
-import { Type } from 'class-transformer';
-import {
-  IsDate,
-  IsEmail,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
+import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from 'src/libs/constants';
 
 export class CreateUserDto {
-  @IsNotEmpty()
   @IsEmail()
   email: string;
 
   @IsString()
-  @IsNotEmpty()
+  @MinLength(PASSWORD_MIN_LENGTH)
+  @MaxLength(PASSWORD_MAX_LENGTH)
   password: string;
-
-  @IsDate()
-  @IsOptional()
-  @Type(() => Date)
-  readonly createdAt?: Date;
 }
