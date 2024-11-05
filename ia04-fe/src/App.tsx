@@ -1,6 +1,53 @@
-import { RouterProvider } from 'react-router-dom';
-import router from './routes';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
-export default function App() {
-  return <RouterProvider router={router} />;
-}
+import { AuthProvider } from './components/AuthProvider';
+import NavBar from './components/NavBar';
+import ProtectedRoute from './components/ProtectedRoute';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Register from './pages/Register';
+import Users from './pages/Users';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <Router>
+        <div className="h-dvh">
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/users"
+              element={
+                <ProtectedRoute>
+                  <Users />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
+      <ToastContainer
+        toastClassName="has-corners"
+        position="top-right"
+      />
+    </AuthProvider>
+  );
+};
+
+export default App;

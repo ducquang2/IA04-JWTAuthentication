@@ -7,59 +7,50 @@ import 'react-toastify/dist/ReactToastify.css';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+const schema = yup.object({
+  email: yup.string().email('Invalid email format').required('Email is required'),
+  password: yup.string().min(8, 'Password must be at least 6 characters').required('Password is required'),
+}).required();
+
 interface FormData {
   email: string;
   password: string;
 }
 
-const schema = yup.object({
-  email: yup.string().email('Invalid email format').required('Email is required'),
-  password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
-}).required();
-
 const apiUrl = import.meta.env.VITE_API_URL;
 
-export default function Register() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormData>({
+const Register = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
-
-  const [apiError, setApiError] = useState<string | null>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const onSubmit: (data: FormData) => Promise<void> = async (data) => {
-    if (isSubmitting) return
-
+  const onSubmit = async (data: FormData) => {
+    if (isSubmitting) return;
     try {
       setIsSubmitting(true);
-      const response = await fetch(`${apiUrl}/users/register`, {
+      const response = await fetch(`${apiUrl}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
-
       if (!response.ok) {
         const errorData = await response.json();
-        setApiError(errorData.message || 'Registration failed');
+        toast.error(errorData.message || 'Registration failed');
         setIsSubmitting(false);
         return;
       }
-
       toast.success('Signup successful!', {
         autoClose: 3000,
         onClose: () => {
-          navigate('/');
-        }
+          navigate('/login');
+        },
       });
     } catch (error) {
-      setApiError('An unexpected error occurred');
+      toast.error('An unexpected error occurred');
       setIsSubmitting(false);
       console.error(error);
     }
@@ -113,13 +104,15 @@ export default function Register() {
             </button>
             <div className="divider">OR</div>
             <div className="text-center">
-              <Link to="/login" className="link link-primary">Already have account?</Link>
+              <Link to="/login" className="link link-primary">
+                Already have an account?
+              </Link>
             </div>
           </div>
-          {apiError && <div className="text-red-500 mt-2">{apiError}</div>}
         </form>
       </div>
     </div>
-
   );
-}
+};
+
+export default Register;
