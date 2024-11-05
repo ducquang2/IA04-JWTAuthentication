@@ -9,7 +9,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'ia-04-jwt-authentication.vercel.app',
+      'https://ia-04-jwt-authentication.vercel.app',
       /\.ia-04-jwt-authentication\.vercel\.app$/,
       'http://localhost:5173',
     ],
