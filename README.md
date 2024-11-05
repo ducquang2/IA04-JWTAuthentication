@@ -40,53 +40,20 @@ cd ia03-fe && yarn dev
 
 ## Rubric
 
-<table>
-    <thead>
-        <tr>
-            <th>Implementation Type</th>
-            <th colspan=2>Criteria</th>
-            <th>Points</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan=2>Backend Implementation</td>
-            <td>API Endpoints</td>
-            <td>✅</td>
-            <td align=center>2</td>
-        </tr>
-        <tr>
-            <td>Error Handling</td>
-            <td>✅</td>
-            <td align=center>2</td>
-        </tr>
-        <tr>
-            <td rowspan=3>Frontend Implementation</td>
-            <td>Routing</td>
-            <td>✅</td>
-            <td align=center>1</td>
-        </tr>
-        <tr>
-            <td>API Integration</td>
-            <td>✅</td>
-            <td align=center>2</td>
-        </tr>
-        <tr>
-            <td>User Experience</td>
-            <td>✅</td>
-            <td align=center>2</td>
-        </tr>
-        <tr>
-            <td colspan=2 align=center>Public host deployment</td>
-            <td>✅</td>
-            <td align=center>1</td>
-        </tr>
-        <tr>
-            <td colspan=3 align=center><strong>Total Points</strong></td>
-            <td align=center><strong>10</strong></td>
-        </tr>
-    </tbody>
-</table>
+| Criteria                    | Description                                                        | Score |
+| --------------------------- | ------------------------------------------------------------------ | ----- |
+| Registration Endpoint       | Works perfectly; validations and hashing are correct.              | 0.5   |
+| Login Endpoint              | Works correctly; token generated and returned.                     | 0.5   |
+| JWT Token Validation        | Proper middleware with token verification on all protected routes. | 0.5   |
+| Profile (Protected Route)   | Protected route works; only accessible with valid token.           | 0.5   |
+| Register page               |                                                                    | 1     |
+| Login page                  |                                                                    | 1     |
+| Profile page                |                                                                    | 1     |
+| Home page                   | Display content based on authentication status                     | 1     |
+| Frontend Form Handling      | All forms work smoothly; good UX with error handling.              | 1     |
+| State Management            | State managed well; token and user info updated smoothly.          | 1     |
+| Error Handling and Feedback | Comprehensive error handling; clear user feedback.                 | 1     |
+| Public host                 | Public host deployment                                             | 1     |
 
 ## Deployment
 
